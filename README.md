@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="ui">
-        <h1>Magnet-Mani</h1>
+        <h1>Magnet-Mayham</h1>
         <p>Trykk <b>MELLOMROM</b> for å bytte polaritet</p>
         <div id="score">Poeng: 0</div>
     </div>
