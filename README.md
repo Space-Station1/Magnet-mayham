@@ -2,7 +2,7 @@
 <html lang="no">
 <head>
     <meta charset="UTF-8">
-    <title>Magnet-Mani</title>
+    <title>Magnet-Mayham</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
