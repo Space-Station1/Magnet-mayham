@@ -1,0 +1,50 @@
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Spilleren (Magneten i midten)
+let player = {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    radius: 40,
+    polarity: 1 // 1 for Pluss (Rød), -1 for Minus (Blå)
+};
+
+// Lytt etter mellomromstast
+window.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+        player.polarity *= -1; // Bytt mellom 1 og -1
+    }
+});
+
+function drawCircleWithSign(x, y, radius, polarity) {
+    // Velg farge
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2);
+    ctx.fillStyle = polarity === 1 ? '#ff4d4d' : '#4d79ff'; // Rød eller Blå
+    ctx.fill();
+    ctx.closePath();
+
+    // Tegn symbol (+ eller -)
+    ctx.fillStyle = "white";
+    ctx.font = `bold ${radius}px Arial`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    let symbol = polarity === 1 ? "+" : "-";
+    ctx.fillText(symbol, x, y + (polarity === 1 ? 2 : 0)); // Litt justering for at + skal se sentrert ut
+}
+
+function update() {
+    // Rens skjermen
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Tegn spilleren
+    drawCircleWithSign(player.x, player.y, player.radius, player.polarity);
+
+    requestAnimationFrame(update);
+}
+
+// Start spillet
+update();
